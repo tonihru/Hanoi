@@ -1,0 +1,15 @@
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/bin/Debug/net10.0/Hanoi
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/bin/Debug/net10.0/Hanoi.deps.json
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/bin/Debug/net10.0/Hanoi.runtimeconfig.json
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/bin/Debug/net10.0/Hanoi.dll
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/bin/Debug/net10.0/Hanoi.pdb
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/obj/Debug/net10.0/Hanoi.GeneratedMSBuildEditorConfig.editorconfig
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/obj/Debug/net10.0/Hanoi.AssemblyInfoInputs.cache
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/obj/Debug/net10.0/Hanoi.AssemblyInfo.cs
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/obj/Debug/net10.0/Hanoi.csproj.CoreCompileInputs.cache
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/obj/Debug/net10.0/Hanoi.sourcelink.json
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/obj/Debug/net10.0/Hanoi.dll
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/obj/Debug/net10.0/refint/Hanoi.dll
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/obj/Debug/net10.0/Hanoi.pdb
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/obj/Debug/net10.0/Hanoi.genruntimeconfig.cache
+/Users/antonia/Desktop/Uni/FH Bachelor/FH BCC/SS26/C#/Hanoi/Hanoi/obj/Debug/net10.0/ref/Hanoi.dll
