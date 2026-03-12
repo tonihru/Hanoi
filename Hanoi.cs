@@ -9,7 +9,7 @@ class Program
             return;
         } else if(n == 1) { //if there is only one disk, move it to the destination Rod
             Console.WriteLine("Disk " + n + " moved from " + fromRod + " to " + toRod);
-        } else {            //recursive solution -->the function calls itself and uses a call stack to solve the puzzle, kind of like function(3)->function(2)->function(1)->function(0)
+        } else {            //recursive solution -->the function calls itself and uses a call stack to solve the puzzle, kind of like for n=3: function(3)->function(2)->function(1)->function(0)
             TowerOfHanoiRecursive(n - 1, fromRod, auxRod, toRod);
             Console.WriteLine("Disk " + n + " moved from "
                             + fromRod + " to " + toRod);
@@ -25,28 +25,28 @@ class Program
         char toRod)
 
         {
-            if (from.Count == 0)
+            if (from.Count == 0)    //if initial Rod is empty, move place disk from toRod on top of fromRod
             {
-                int disk = to.Pop();
-                from.Push(disk);
+                int disk = to.Pop();    //-> Pop: removes top element
+                from.Push(disk);        //-> Push: puts element on top of the stack
                 Console.WriteLine($"Disk {disk} moved from {toRod} to {fromRod}");
             }
 
-            else if (to.Count == 0)
+            else if (to.Count == 0)     //If destination Rod is empty, take top disk from fromRod and place it on toRod
             {
                 int disk = from.Pop();
                 to.Push(disk);
                 Console.WriteLine($"Disk {disk} moved from {fromRod} to {toRod}");
             }
 
-            else if (from.Peek() > to.Peek())
+            else if (from.Peek() > to.Peek())   //-> Peek: look at the top     //If fromRod is bigger than toRod, take disk from fromRod and place it on toRod
             {
                 int disk = to.Pop();
                 from.Push(disk);
                 Console.WriteLine($"Disk {disk} moved from {toRod} to {fromRod}");
             }
 
-            else
+            else        //If the above are not true, take disk from fromRod and place on toRod
             {
                 int disk = from.Pop();
                 to.Push(disk);
@@ -74,17 +74,18 @@ class Program
             a = d;
             d = temp;
         }
-        //Tower of Hanoi has a solution of n^2-1, n being the number of disks
+        //Tower of Hanoi has a solution of n^2-1 moves, n being the number of disks
         int moves = (int)Math.Pow(2, n) - 1; 
 
+        //loops through until it hits the number of moves projected above
         for(int i = 1; i <= moves; i++)
         {
-        if (i % 3 == 1)
-            MoveDisk(L, R, s, d);
+        if (i % 3 == 1)        //Moves repeat every 3 steps. Which Rods are used depends on the number of disks --> switching chars around. 
+            MoveDisk(L, R, s, d);   //move type 1
         else if (i % 3 == 2)
-            MoveDisk(L, M, s, a);
+            MoveDisk(L, M, s, a);   //move type 2
         else
-            MoveDisk(M, R, a, d);
+            MoveDisk(M, R, a, d);   //move type 3
         }
     }
 
