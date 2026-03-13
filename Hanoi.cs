@@ -19,14 +19,15 @@ class Program
 
             TowerOfHanoiRecursive(n - 1, fromRod, auxRod, toRod);
 
-            Console.ForegroundColor = ConsoleColor.Blue;    //oooo fun colors
+            Console.ForegroundColor = ConsoleColor.Blue;    //oooo fun text colors
             Console.WriteLine("Disk " + n + " moved from "
                             + fromRod + " to " + toRod);
             Console.ResetColor();
-            
+
         }
     }
 
+    //Iterative solution + Helpers + ASCII
     //function to move the disks and write out their positions in the console
     static void MoveDisk(
         Stack<int> from, 
