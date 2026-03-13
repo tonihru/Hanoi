@@ -11,8 +11,10 @@ class Program
             Console.WriteLine("Disk " + n + " moved from " + fromRod + " to " + toRod);
         } else {            //recursive solution -->the function calls itself and uses a call stack to solve the puzzle, kind of like for n=3: function(3)->function(2)->function(1)->function(0)
             TowerOfHanoiRecursive(n - 1, fromRod, auxRod, toRod);
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Disk " + n + " moved from "
                             + fromRod + " to " + toRod);
+            Console.ResetColor();
             TowerOfHanoiRecursive(n - 1, auxRod, toRod, fromRod);
         }
     }
@@ -29,28 +31,36 @@ class Program
             {
                 int disk = to.Pop();    //-> Pop: removes top element
                 from.Push(disk);        //-> Push: puts element on top of the stack
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"Disk {disk} moved from {toRod} to {fromRod}");
+                Console.ResetColor();
             }
 
             else if (to.Count == 0)     //If destination Rod is empty, take top disk from fromRod and place it on toRod
             {
                 int disk = from.Pop();
                 to.Push(disk);
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"Disk {disk} moved from {fromRod} to {toRod}");
+                Console.ResetColor();
             }
 
             else if (from.Peek() > to.Peek())   //-> Peek: look at the top     //If fromRod is bigger than toRod, take disk from fromRod and place it on toRod
             {
                 int disk = to.Pop();
                 from.Push(disk);
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"Disk {disk} moved from {toRod} to {fromRod}");
+                Console.ResetColor();
             }
 
             else        //If the above are not true, take disk from fromRod and place on toRod
             {
                 int disk = from.Pop();
                 to.Push(disk);
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine($"Disk {disk} moved from {fromRod} to {toRod}");
+                Console.ResetColor();
             }
         }
 
@@ -91,45 +101,41 @@ class Program
 
     //Calling Recursive or Iterative
     public static void Main(string[] args)
-{
-    if (args.Length < 2)
     {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Usage:");
-        Console.WriteLine("  -recursive <number_of_disks>");
-        Console.WriteLine("  -iterative <number_of_disks>");
-        Console.ResetColor();
-        return;
-    }
+        if (args.Length < 2)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Please use one of the following commands:");
+            Console.WriteLine("  -recursive <number of disks>");
+            Console.WriteLine("  -iterative <number of disks>");
+            Console.ResetColor();
+            return;
+        }
 
-    string mode = args[0];
-    int n = int.Parse(args[1]);
+        string mode = args[0];
+        int n = int.Parse(args[1]);
 
-    Console.ForegroundColor = ConsoleColor.Cyan;
-    Console.WriteLine($"Tower of Hanoi with {n} disks\n");
-    Console.ResetColor();
-
-    if (mode == "-recursive")
-    {
-        Console.ForegroundColor = ConsoleColor.Green;
-        Console.WriteLine("Running Recursive Solution:\n");
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"Tower of Hanoi with {n} disks\n");
         Console.ResetColor();
 
-        TowerOfHanoiRecursive(n, 'L', 'R', 'M');
-    }
-    else if (mode == "-iterative")
-    {
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.WriteLine("Running Iterative Solution:\n");
-        TowerOfHanoiIterative(n);
-        Console.ResetColor();
+        if (mode == "-recursive")
+        {
+            Console.WriteLine("Recursive Solution:\n");
 
+            TowerOfHanoiRecursive(n, 'L', 'R', 'M');
+        }
+        else if (mode == "-iterative")
+        {
+            Console.WriteLine("Iterative Solution:\n");
+            TowerOfHanoiIterative(n);
+
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Please use dotnet run with either -recursive or -iterative and the number of disks.");
+            Console.ResetColor();
+        }
     }
-    else
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Unknown argument. Use -recursive or -iterative.");
-        Console.ResetColor();
-    }
-}
 }
