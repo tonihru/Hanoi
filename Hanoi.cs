@@ -8,14 +8,16 @@ class Program
     static void TowerOfHanoiRecursive(int n, char fromRod, char toRod, char auxRod)
     {
         if (n == 0) {   //no disk, no game :(
+        
             return;
+
         } else if(n == 1) { //if there is only one disk, move it to the destination Rod
 
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Disk " + n + " moved from " + fromRod + " to " + toRod);
             Console.ResetColor();
 
-        } else {            //recursive solution -->the function calls itself and uses a call stack to solve the puzzle, kind of like for n=3: function(3)->function(2)->function(1)->function(0)
+        } else {    //recursive solution -->the function calls itself and uses a call stack to solve the puzzle, kind of like for n=3: function(3)->function(2)->function(1)->function(0)
 
             TowerOfHanoiRecursive(n - 1, fromRod, auxRod, toRod);
 
