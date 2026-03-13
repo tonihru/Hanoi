@@ -90,11 +90,46 @@ class Program
     }
 
     //Calling Recursive or Iterative
-    public static void Main(String[] args)
+    public static void Main(string[] args)
+{
+    if (args.Length < 2)
     {
-
-        TowerOfHanoiRecursive(4, 'L', 'M', 'R');
-
-        TowerOfHanoiIterative(3);
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Usage:");
+        Console.WriteLine("  -recursive <number_of_disks>");
+        Console.WriteLine("  -iterative <number_of_disks>");
+        Console.ResetColor();
+        return;
     }
+
+    string mode = args[0];
+    int n = int.Parse(args[1]);
+
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    Console.WriteLine($"Tower of Hanoi with {n} disks\n");
+    Console.ResetColor();
+
+    if (mode == "-recursive")
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Running Recursive Solution:\n");
+        Console.ResetColor();
+
+        TowerOfHanoiRecursive(n, 'L', 'R', 'M');
+    }
+    else if (mode == "-iterative")
+    {
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine("Running Iterative Solution:\n");
+        TowerOfHanoiIterative(n);
+        Console.ResetColor();
+
+    }
+    else
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("Unknown argument. Use -recursive or -iterative.");
+        Console.ResetColor();
+    }
+}
 }
