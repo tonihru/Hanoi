@@ -28,7 +28,7 @@ dotnet run -iterative <number of disks>
 This Program contains, as previously mentioned, a recursive and an iterative solution to the Tower of Hanoi puzzle. The iterative solution is also visualized in the console using ASCII art (to the best of my ability.).
 
 # Contributing
-Just me! :)
+Just me!
 
 # License
 None.

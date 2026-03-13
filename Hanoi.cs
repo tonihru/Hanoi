@@ -8,7 +8,7 @@ class Program
     static void TowerOfHanoiRecursive(int n, char fromRod, char toRod, char auxRod)
     {
         if (n == 0) {   //no disk, no game :(
-        
+
             return;
 
         } else if(n == 1) { //if there is only one disk, move it to the destination Rod
@@ -17,7 +17,7 @@ class Program
             Console.WriteLine("Disk " + n + " moved from " + fromRod + " to " + toRod);
             Console.ResetColor();
 
-        } else {    //recursive solution -->the function calls itself and uses a call stack to solve the puzzle, kind of like for n=3: function(3)->function(2)->function(1)->function(0)
+        } else {    //Recursive solution -->the function calls itself and uses a call stack to solve the puzzle, kind of like for n=3: function(3)->function(2)->function(1)->function(0)
 
             TowerOfHanoiRecursive(n - 1, fromRod, auxRod, toRod);
 
@@ -146,7 +146,7 @@ class Program
         //loops through until it hits the number of moves projected above
         for(int i = 1; i <= moves; i++)
         {
-        if (i % 3 == 1)        //Moves repeat every 3 steps. Which Rods are used depends on the number of disks --> switching chars around. 
+        if (i % 3 == 1)        //3 different move types that repeat until done. Which Rods are used depends on the number of disks --> switching chars around. 
             MoveDisk(L, R, s, d);   //move type 1
         else if (i % 3 == 2)
             MoveDisk(L, M, s, a);   //move type 2
