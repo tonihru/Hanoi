@@ -1,4 +1,6 @@
-﻿namespace Hanoi;
+﻿using System.Diagnostics.Contracts;
+
+namespace Hanoi;
 
 class Program
 {
@@ -8,14 +10,20 @@ class Program
         if (n == 0) {   //no disk, no game :(
             return;
         } else if(n == 1) { //if there is only one disk, move it to the destination Rod
-            Console.WriteLine("Disk " + n + " moved from " + fromRod + " to " + toRod);
-        } else {            //recursive solution -->the function calls itself and uses a call stack to solve the puzzle, kind of like for n=3: function(3)->function(2)->function(1)->function(0)
-            TowerOfHanoiRecursive(n - 1, fromRod, auxRod, toRod);
+
             Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine("Disk " + n + " moved from " + fromRod + " to " + toRod);
+            Console.ResetColor();
+
+        } else {            //recursive solution -->the function calls itself and uses a call stack to solve the puzzle, kind of like for n=3: function(3)->function(2)->function(1)->function(0)
+
+            TowerOfHanoiRecursive(n - 1, fromRod, auxRod, toRod);
+
+            Console.ForegroundColor = ConsoleColor.Blue;    //oooo fun colors
             Console.WriteLine("Disk " + n + " moved from "
                             + fromRod + " to " + toRod);
             Console.ResetColor();
-            TowerOfHanoiRecursive(n - 1, auxRod, toRod, fromRod);
+            
         }
     }
 
@@ -64,6 +72,50 @@ class Program
             }
         }
 
+    //----------ASCII----------
+    //helper function to print a single disk, if the rod is empty, it prints ”|"
+    static void PrintDisk(int disk, int max)
+    {
+            if (disk == 0)
+            {
+                Console.Write(Center("|", max));
+            }
+            else
+            {
+                string stars = new string('*', disk * 2 - 1);
+                Console.Write(Center(stars, max));
+            }
+    }
+
+    //helper function to center the towers in ASCII
+    static string Center(string text, int max)
+    {
+        int width = max * 2 + 1;
+        return text.PadLeft((width + text.Length) / 2).PadRight(width);
+    }
+
+    static void DrawTowers(Stack <int>L, Stack <int> M, Stack <int> R, int n)
+    {
+        //converts the stacks to arrays 
+        int[] lArr = L.ToArray();
+        int[] mArr = M.ToArray();
+        int[] rArr = R.ToArray();
+
+        //loops through the arrays and prints the corresponding disks using *
+        for (int level = 0; level < n; level++)
+        {
+            int lIndex = level - (n - lArr.Length);
+            int mIndex = level - (n - mArr.Length);
+            int rIndex = level - (n - rArr.Length);
+
+            PrintDisk(level < lArr.Length ? lArr[level] : 0, n);
+            PrintDisk(level < mArr.Length ? mArr[level] : 0, n);
+            PrintDisk(level < rArr.Length ? rArr[level] : 0, n);
+
+            Console.WriteLine();
+        }
+    }
+
     static void TowerOfHanoiIterative(int n)
     {
         Stack<int> L = new Stack<int>();
@@ -73,6 +125,7 @@ class Program
         //Pushing all Disks to L to start solving the puzzle
         for(int i = n; i >= 1; i--)
         L.Push(i); 
+        DrawTowers(L, M, R, n);
         
         char s = 'L'; //s -> source Rod
         char a = 'M'; //a -> auxiliary Rod
@@ -96,12 +149,15 @@ class Program
             MoveDisk(L, M, s, a);   //move type 2
         else
             MoveDisk(M, R, a, d);   //move type 3
+            
+            DrawTowers(L, M, R, n); //prints the towers as ASCII art after every move
         }
     }
 
     //Calling Recursive or Iterative
     public static void Main(string[] args)
     {
+        //if using just dotnet run without specifying iterative or recursive
         if (args.Length < 2)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -112,6 +168,8 @@ class Program
             return;
         }
 
+        //args[0] -> -recursive/-iteraive
+        //args[1] -> number of disks (n) 
         string mode = args[0];
         int n = int.Parse(args[1]);
 
@@ -129,7 +187,6 @@ class Program
         {
             Console.WriteLine("Iterative Solution:\n");
             TowerOfHanoiIterative(n);
-
         }
         else
         {
