@@ -19,10 +19,12 @@ If you're reading this, you should have all the necessary files needed to run th
 Open Hanoi.cs and the terminal, and run the program using one of the following commands:
 
 1. Recursive approach:
-dotnet run -recursive <number of disks>
+dotnet run -recursive n
 
 2. Iterative approach:
-dotnet run -iterative <number of disks>
+dotnet run -iterative n
+
+n being the desired number of disks
 
 # Roadmap
 This Program contains, as previously mentioned, a recursive and an iterative solution to the Tower of Hanoi puzzle. The iterative solution is also visualized in the console using ASCII art (to the best of my ability.).
